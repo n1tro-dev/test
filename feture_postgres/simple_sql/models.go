@@ -1,0 +1,18 @@
+package simplesql
+
+import "time"
+
+type TaskModel struct {
+	ID          int
+	Title       string
+	Description string
+	Completed   bool
+	CreatedAt   time.Time
+	CompletedAt *time.Time
+}
+
+// func NewTask() Task{
+// 	return Task{
+
+// 	}
+// }
