@@ -5,9 +5,6 @@ import (
 	"fmt"
 	simpleconnection "study/feture_postgres/simple_connection"
 	simplesql "study/feture_postgres/simple_sql"
-	"time"
-
-	"github.com/k0kubun/pp"
 )
 
 func main() {
@@ -30,27 +27,27 @@ func main() {
 	// 	panic(err)
 	// }
 
-	tasks, err := simplesql.SelectRows(ctx, conn)
-	if err != nil {
-		panic(err)
-	}
-	for _, task := range tasks {
-		if task.ID == 3 {
-			task.Title = "Покормить кошку"
-			task.Description = "Насыпать кошке корм"
-			task.Completed = true
-			now := time.Now()
-			task.CompletedAt = &now
+	// tasks, err := simplesql.SelectRows(ctx, conn)
+	// if err != nil {
+	// 	panic(err)
+	// }
+	// for _, task := range tasks {
+	// 	if task.ID == 3 {
+	// 		task.Title = "Покормить кошку"
+	// 		task.Description = "Насыпать кошке корм"
+	// 		task.Completed = true
+	// 		now := time.Now()
+	// 		task.CompletedAt = &now
 
-			err := simplesql.UpdateTask(ctx, conn, task)
-			if err != nil{
-				panic(err)
-			}
-			break
-		}
-	}
+	// 		err := simplesql.UpdateTask(ctx, conn, task)
+	// 		if err != nil{
+	// 			panic(err)
+	// 		}
+	// 		break
+	// 	}
+	// }
 
-	pp.Println(tasks)
+	// pp.Println(tasks)
 
 	fmt.Println("Успешно")
 }
