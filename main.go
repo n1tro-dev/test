@@ -1,23 +1,21 @@
 package main
 
 import (
-	"context"
 	"fmt"
-	simpleconnection "study/feture_postgres/simple_connection"
-	simplesql "study/feture_postgres/simple_sql"
+	"study/http_server"
 )
 
 func main() {
-	ctx := context.Background()
+	// ctx := context.Background()
 
-	conn, err := simpleconnection.CreateConnection(ctx)
-	if err != nil {
-		panic(err)
-	}
+	// conn, err := simpleconnection.CreateConnection(ctx)
+	// if err != nil {
+	// 	panic(err)
+	// }
 
-	if err := simplesql.CreateTable(ctx, conn); err != nil {
-		panic(err)
-	}
+	// if err := simplesql.CreateTable(ctx, conn); err != nil {
+	// 	panic(err)
+	// }
 
 	// if err := simplesql.InserRow(ctx, conn, "Домашка", "сделать дз", false, time.Now()); err != nil {
 	// 	panic(err)
@@ -49,5 +47,13 @@ func main() {
 
 	// pp.Println(tasks)
 
-	fmt.Println("Успешно")
+	fmt.Println("Http server started!")
+
+	err := http_server.StartHttpServer()
+	if err != nil {
+		fmt.Println("Error: ", err)
+	} else{
+		fmt.Println("Успешно запустился")
+	}
+
 }
